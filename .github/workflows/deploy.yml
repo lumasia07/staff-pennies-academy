@@ -38,7 +38,7 @@ jobs:
       - name: Build frontend assets
         run: npm run build
 
-      -- name: Create .env file
+      - name: Create .env file
         run: echo "${{ secrets.PROD_ENV }}" > .env
 
       # --- 4. Deploy to cPanel via FTP ---
