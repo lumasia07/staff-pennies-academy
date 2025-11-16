@@ -229,7 +229,7 @@
                 </tr>
                 <tr>
                     <td style="padding: 10px; font-weight: bold; background: #f1f1f1;">Pass Mark</td>
-                    <td style="padding: 10px; text-align: center;">70%</td>
+                    <td style="padding: 10px; text-align: center;">80%</td>
                 </tr>
                 <tr>
                     <td style="padding: 10px; font-weight: bold; background: #f1f1f1;">Result</td>
@@ -242,9 +242,9 @@
 
             <p class="summary-text" style="margin-top: 15px;">
                 @if($test->score >= 70)
-                    This performance meets the passing standard of 70% and demonstrates satisfactory mastery of the assessed material.
+                    This performance meets the passing standard of 80% and demonstrates satisfactory mastery of the assessed material.
                 @else
-                    This performance does not meet the passing standard of 70%.
+                    This performance does not meet the passing standard of 80%.
                 @endif
             </p>
             <p style="margin-top: 15px; font-size: 0.8rem;">

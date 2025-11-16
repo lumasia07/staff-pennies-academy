@@ -55,14 +55,6 @@ class QuizController extends Controller
      */
     public function show(Quiz $quiz): Response
     {
-        // Allow instructors to view quizzes they own or are assigned to
-        $user = Auth::user();
-        $isOwner = $quiz->instructor_id === $user->id;
-        $isAssigned = method_exists($user, 'quizzes') && $user->quizzes()->where('id', $quiz->id)->exists();
-        if (!($isOwner || $isAssigned)) {
-            abort(403);
-        }
-
         return Inertia::render('Quizzes/Show', [
             'quiz' => $quiz->load('questions'),
             'flash' => [
@@ -77,11 +69,6 @@ class QuizController extends Controller
      */
     public function storeQuestions(Request $request, Quiz $quiz)
     {
-        // Ensure the quiz belongs to the authenticated user
-        if ($quiz->instructor_id !== Auth::id()) {
-            abort(403);
-        }
-
         // Accept either top-level 'questions' or Inertia nested payload 'data.questions'
         $payloadQuestions = $request->input('questions');
         if (is_null($payloadQuestions)) {
@@ -123,8 +110,8 @@ class QuizController extends Controller
      */
     public function destroyQuestion(Quiz $quiz, Question $question)
     {
-        if ($quiz->instructor_id !== Auth::id() || $question->quiz_id !== $quiz->id) {
-            abort(403);
+        if ($question->quiz_id !== $quiz->id) {
+            abort(404);
         }
 
         $question->delete();
@@ -137,8 +124,8 @@ class QuizController extends Controller
      */
     public function updateQuestion(Request $request, Quiz $quiz, Question $question)
     {
-        if ($quiz->instructor_id !== Auth::id() || $question->quiz_id !== $quiz->id) {
-            abort(403);
+        if ($question->quiz_id !== $quiz->id) {
+            abort(404);
         }
 
         $request->validate([

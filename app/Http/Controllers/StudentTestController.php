@@ -45,14 +45,14 @@ class StudentTestController extends Controller
         $validatedData = $request->validate([
             'student_id' => 'nullable|uuid|exists:students,id',
             'quiz_id' => 'required|uuid|exists:quizzes,id',
-            'expires_in' => 'nullable|integer|min:1', // e.g., 1 (hour)
+            'expires_in' => 'nullable|numeric|min:0.5', // Accept decimal values (0.5 for 30 minutes)
             'mass_emails' => 'nullable|string',
         ]);
 
         $quiz = Quiz::findOrFail($validatedData['quiz_id']);
         $instructor = Auth::user();
         $expiresIn = $validatedData['expires_in'] ?? 1;
-        $expiresAt = Carbon::now()->addHours((int) $expiresIn);
+        $expiresAt = Carbon::now()->addHours((float) $expiresIn);
 
         $assigned = [];
         // Mass assignment if emails provided
@@ -114,12 +114,7 @@ class StudentTestController extends Controller
      */
     public function downloadPdf(StudentTest $studentTest)
     {
-        // 1. Authorization: Ensure the logged-in user owns this test
-        if ($studentTest->instructor_id !== Auth::id()) {
-            abort(403);
-        }
-
-        // 2. Load ALL data needed for the report
+        // 1. Load ALL data needed for the report
         $studentTest->load('student', 'quiz', 'answers.question');
 
         // 3. Count correct/incorrect
@@ -145,49 +140,62 @@ class StudentTestController extends Controller
      */
     public function sendResultEmail(StudentTest $studentTest)
     {
-        // 1. Authorization: Ensure the logged-in user owns this test
-        if ($studentTest->instructor_id !== Auth::id()) {
-            abort(403);
+        try {
+            // 1. Authorization: Ensure the logged-in user owns this test
+            if ($studentTest->instructor_id !== Auth::id()) {
+                abort(403);
+            }
+
+            // 2. Ensure the test is completed
+            if (!$studentTest->completed_at) {
+                return Redirect::back()->with('error', 'Cannot send email for incomplete test.');
+            }
+
+            // 3. Load necessary data
+            $studentTest->load('student', 'quiz', 'answers.question');
+
+            // 4. Count correct/incorrect
+            $correct = $studentTest->answers->where('is_correct', true)->count();
+            $total = $studentTest->quiz->questions->count();
+            $incorrect = $total - $correct;
+
+            // 5. Generate the PDF
+            $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('pdf.test-result', [
+                'test' => $studentTest,
+                'correct' => $correct,
+                'incorrect' => $incorrect,
+                'total' => $total,
+            ]);
+
+            // 6. Send the result email with PDF as attachment
+            \Log::info('Attempting to send result email', [
+                'student_email' => $studentTest->student->email,
+                'student_name' => $studentTest->student->first_name,
+                'quiz_title' => $studentTest->quiz->title,
+            ]);
+            
+            Mail::to($studentTest->student->email)->send(new StudentResultMail(
+                $studentTest->student->first_name,
+                $studentTest->quiz->title,
+                $studentTest->score,
+                $correct,
+                $total,
+                $studentTest->completed_at,
+                route('results.pdf', $studentTest) // Link to download PDF
+            ));
+            
+            \Log::info('Result email sent successfully to: ' . $studentTest->student->email);
+
+            // 7. Redirect back with success message
+            return Redirect::back()->with('success', "Result email sent to {$studentTest->student->first_name}.");
+        } catch (\Exception $e) {
+            \Log::error('Failed to send result email: ' . $e->getMessage(), [
+                'student_test_id' => $studentTest->id,
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString()
+            ]);
+            
+            return Redirect::back()->with('error', 'Failed to send email: ' . $e->getMessage());
         }
-
-        // 2. Ensure the test is completed
-        if (!$studentTest->completed_at) {
-            return Redirect::back()->with('error', 'Cannot send email for incomplete test.');
-        }
-
-        // 3. Load necessary data
-        $studentTest->load('student', 'quiz', 'answers.question');
-
-        // 4. Count correct/incorrect
-        $correct = $studentTest->answers->where('is_correct', true)->count();
-        $total = $studentTest->quiz->questions->count();
-        $incorrect = $total - $correct;
-
-        // 5. Generate and save the PDF
-        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('pdf.test-result', [
-            'test' => $studentTest,
-            'correct' => $correct,
-            'incorrect' => $incorrect,
-            'total' => $total,
-        ]);
-        $fileName = "Test-Result-{$studentTest->student->last_name}-{$studentTest->quiz->title}-{$studentTest->id}.pdf";
-        $pdfPath = storage_path("app/public/results/{$fileName}");
-        \Illuminate\Support\Facades\Storage::makeDirectory('public/results');
-        file_put_contents($pdfPath, $pdf->output());
-        $pdfUrl = \Illuminate\Support\Facades\Storage::url("results/{$fileName}");
-
-        // 6. Send the result email with link
-        Mail::to($studentTest->student->email)->send(new StudentResultMail(
-            $studentTest->student->first_name,
-            $studentTest->quiz->title,
-            $studentTest->score,
-            $correct,
-            $total,
-            $studentTest->completed_at,
-            $pdfUrl
-        ));
-
-        // 6. Redirect back with success message
-        return Redirect::back()->with('success', "Result email sent to {$studentTest->student->first_name}.");
     }
 }

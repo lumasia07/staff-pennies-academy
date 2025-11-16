@@ -65,6 +65,9 @@ Route::get('/test/{token}', [TestController::class, 'show'])->name('student.test
 Route::post('/test/{token}/start', [TestController::class, 'start'])->name('student.test.start');
 Route::post('/test/{token}/submit', [TestController::class, 'submit'])->name('student.test.submit');
 
+// Public route for students to download their result PDFs
+Route::get('/results/{studentTest}/pdf', [StudentTestController::class, 'downloadPdf'])->name('results.pdf');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/quizzes', [QuizController::class, 'index'])->name('quizzes.index');
@@ -76,7 +79,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/quizzes/{quiz}/questions/{question}', [QuizController::class, 'destroyQuestion'])->name('quizzes.questions.destroy');
 
     Route::get('/results', [StudentTestController::class, 'index'])->name('results.index');
-    Route::get('/results/{studentTest}/pdf', [StudentTestController::class, 'downloadPdf'])->name('results.pdf');
     Route::post('/results/{studentTest}/email', [StudentTestController::class, 'sendResultEmail'])->name('results.email');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

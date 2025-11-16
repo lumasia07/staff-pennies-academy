@@ -66,11 +66,9 @@ class TestController extends Controller
             return redirect()->route('student.test.show', $token);
         }
 
-        // Set started_at and update expires_at to 30 minutes from now
-        $startedAt = now();
+        // Set started_at but keep the original expires_at (1 hour from assignment)
         $studentTest->update([
-            'started_at' => $startedAt,
-            'expires_at' => $startedAt->addMinutes(30), // 30 minutes test time
+            'started_at' => now(),
         ]);
 
         return redirect()->route('student.test.show', $token);

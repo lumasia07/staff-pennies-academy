@@ -223,37 +223,17 @@ export default function Show({ quiz }) {
                                                 </div>
                                             ) : (
                                                 // Display mode
-                                                <div className="flex justify-between items-start">
-                                                    <div className="flex-1">
-                                                        <h4 className="font-medium text-gray-900">
-                                                            {index + 1}. {question.question_text}
-                                                        </h4>
-                                                        <ul className="mt-2 space-y-1">
-                                                            {question.options.map((option, oIndex) => (
-                                                                <li key={oIndex} className={`text-sm ${oIndex === question.correct_option_index ? 'text-green-600 font-medium' : 'text-gray-600'}`}>
-                                                                    {String.fromCharCode(65 + oIndex)}. {option}
-                                                                </li>
-                                                            ))}
-                                                        </ul>
-                                                    </div>
-                                                    <div className="flex space-x-2 ml-4">
-                                                        <button
-                                                            onClick={() => startEditing(question)}
-                                                            className="text-blue-600 hover:text-blue-800"
-                                                        >
-                                                            <Edit2 className="w-4 h-4" />
-                                                        </button>
-                                                        <button
-                                                            onClick={() => {
-                                                                if (confirm('Are you sure you want to delete this question?')) {
-                                                                    router.delete(route('quizzes.questions.destroy', [quiz.id, question.id]));
-                                                                }
-                                                            }}
-                                                            className="text-red-500 hover:text-red-700"
-                                                        >
-                                                            <Trash2 className="w-4 h-4" />
-                                                        </button>
-                                                    </div>
+                                                <div>
+                                                    <h4 className="font-medium text-gray-900">
+                                                        {index + 1}. {question.question_text}
+                                                    </h4>
+                                                    <ul className="mt-2 space-y-1">
+                                                        {question.options.map((option, oIndex) => (
+                                                            <li key={oIndex} className={`text-sm ${oIndex === question.correct_option_index ? 'text-green-600 font-medium' : 'text-gray-600'}`}>
+                                                                {String.fromCharCode(65 + oIndex)}. {option}
+                                                            </li>
+                                                        ))}
+                                                    </ul>
                                                 </div>
                                             )}
                                         </div>

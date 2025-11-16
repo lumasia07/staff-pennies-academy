@@ -1,16 +1,40 @@
 import { Head, useForm } from '@inertiajs/react';
 import PrimaryButton from '@/Components/PrimaryButton';
+import { useState } from 'react';
 
 export default function Welcome({ studentTest, quiz, totalQuestions }) {
     const { post, processing } = useForm();
+    const [countdown, setCountdown] = useState(null);
 
     const startTest = () => {
-        post(route('student.test.start', studentTest.unique_link_token));
+        setCountdown(3);
+        
+        const countdownInterval = setInterval(() => {
+            setCountdown((prev) => {
+                if (prev === 1) {
+                    clearInterval(countdownInterval);
+                    post(route('student.test.start', studentTest.unique_link_token));
+                    return null;
+                }
+                return prev - 1;
+            });
+        }, 1000);
     };
 
     return (
         <>
             <Head title={`${quiz.title} - Welcome`} />
+
+            {countdown !== null && (
+                <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
+                    <div className="text-center">
+                        <div className="text-9xl font-bold text-white animate-pulse">
+                            {countdown}
+                        </div>
+                        <p className="text-2xl text-white mt-4">Get Ready...</p>
+                    </div>
+                </div>
+            )}
 
             <div className="min-h-screen bg-gray-50 py-12">
                 <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -54,10 +78,10 @@ export default function Welcome({ studentTest, quiz, totalQuestions }) {
 
                         <PrimaryButton
                             onClick={startTest}
-                            disabled={processing}
+                            disabled={processing || countdown !== null}
                             className="text-lg px-8 py-3"
                         >
-                            {processing ? 'Starting Test...' : 'Start Test'}
+                            {countdown !== null ? `Starting in ${countdown}...` : processing ? 'Starting Test...' : 'Start Test'}
                         </PrimaryButton>
                     </div>
                 </div>
