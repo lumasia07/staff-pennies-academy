@@ -46,7 +46,7 @@ jobs:
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           # Your cPanel FTP server address
-          server: ftp.penniesacademy.com
+          server: penniesacademy.com
           
           # Your cPanel FTP username
           username: lumasia@test.penniesacademy.com
