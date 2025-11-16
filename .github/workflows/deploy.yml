@@ -49,6 +49,8 @@ jobs:
           username: lumasia@test.penniesacademy.com
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: /repositories/staff-pennies-academy/
+          dangerous-clean-slate: false
+          dry-run: false
           exclude: |
             **/.git*
             **/.git*/**
@@ -59,3 +61,4 @@ jobs:
             vendor/**
             storage/logs/**
             .env.example
+            phpunit.xml
