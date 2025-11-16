@@ -41,13 +41,19 @@ jobs:
       - name: Create .env file
         run: echo "${{ secrets.PROD_ENV }}" > .env
 
-      # --- 4. Deploy to cPanel via SSH ---
-      - name: Deploy files via rsync
-        uses: burnett01/rsync-deployments@6.0.0
+      # --- 4. Deploy to cPanel via FTP ---
+      - name: Deploy files via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          switches: -avzr --delete --exclude='.git*' --exclude='.github' --exclude='README.md' --exclude='node_modules' --exclude='tests'
-          path: ./
-          remote_path: /home/cbbfjzy7r49h/repositories/staff-pennies-academy/
-          remote_host: ${{ secrets.SSH_HOST }}
-          remote_user: ${{ secrets.SSH_USERNAME }}
-          remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          server: 208.109.20.92
+          username: lumasia@test.penniesacademy.com
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: /repositories/staff-pennies-academy/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            .github/**
+            README.md
+            node_modules/**
+            tests/**
+            storage/logs/**
