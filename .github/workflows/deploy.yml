@@ -56,4 +56,6 @@ jobs:
             README.md
             node_modules/**
             tests/**
+            vendor/**
             storage/logs/**
+            .env.example
