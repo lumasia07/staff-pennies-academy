@@ -41,31 +41,13 @@ jobs:
       - name: Create .env file
         run: echo "${{ secrets.PROD_ENV }}" > .env
 
-      # --- 4. Deploy to cPanel via FTP ---
-      - name: Deploy files via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      # --- 4. Deploy to cPanel via SSH ---
+      - name: Deploy files via rsync
+        uses: burnett01/rsync-deployments@6.0.0
         with:
-          # Your cPanel FTP server address
-          server: penniesacademy.com
-          
-          # Your cPanel FTP username
-          username: lumasia@test.penniesacademy.com
-          
-          # Your FTP password (stored in GitHub Secrets)
-          password: ${{ secrets.FTP_PASSWORD }}
-          
-          # FTP port
-          port: 21
-          
-          # Use FTPS protocol (FTP with TLS)
-          protocol: ftps
-          
-          # The directory on your server to upload files to
-          server-dir: /home/cbbfjzy7r49h/repositories/staff-pennies-academy/
-          
-          # Don't upload these files
-          exclude: |
-            **/.git*
-            **/.git*/**
-            .github/**
-            README.md
+          switches: -avzr --delete --exclude='.git*' --exclude='.github' --exclude='README.md' --exclude='node_modules' --exclude='tests'
+          path: ./
+          remote_path: /home/cbbfjzy7r49h/repositories/staff-pennies-academy/
+          remote_host: ${{ secrets.SSH_HOST }}
+          remote_user: ${{ secrets.SSH_USERNAME }}
+          remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
