@@ -30,7 +30,7 @@ class QuizSeederD extends Seeder
             // Q1
             [
                 'question_text' => 'The lights on your vehicle must be turned on at any time of the day or night when persons and vehicles cannot be clearly seen for at least:',
-                'image_url' => '/test_images/c/q1.png',
+                'image_url' => '/test_images/d/q1.png',
                 'options' => [
                     "750 feet.",
                     "1,000 feet.",
@@ -42,7 +42,7 @@ class QuizSeederD extends Seeder
             // Q2
             [
                 'question_text' => 'This sign indicates you should:',
-                'image_url' => '/test_images/c/q2.png', // <-- REUSED
+                'image_url' => '/test_images/d/q2.png', // <-- REUSED
                 'options' => [
                     "slow down for a right turn.",
                     "look for a detour to the right.",
@@ -53,7 +53,7 @@ class QuizSeederD extends Seeder
             // Q3
             [
                 'question_text' => 'After overtaking another vehicle on a two-lane road, you can best judge when it is safe to drive back into the right-hand lane by:',
-                'image_url' => '/test_images/c/q3.png',
+                'image_url' => '/test_images/d/q3.png',
                 'options' => [
                     "waiting until you can no longer see the overtaken vehicle on your right.",
                     "waiting until you can see the overtaken vehicle in the rearview mirror.",
@@ -65,7 +65,7 @@ class QuizSeederD extends Seeder
             // Q4
             [
                 'question_text' => 'A flashing yellow light warns drivers:',
-                'image_url' => '/test_images/c/q4.png',
+                'image_url' => '/test_images/d/q4.png',
                 'options' => [
                     "to slow down if other traffic is near.",
                     "to slow down and proceed with caution.",
@@ -77,7 +77,7 @@ class QuizSeederD extends Seeder
             // Q5
             [
                 'question_text' => 'Headlights must be turned on:',
-                'image_url' => '/test_images/c/q5.png',
+                'image_url' => '/test_images/d/q5.png',
                 'options' => [
                     "at sunset.",
                     "30 minutes before sunset.",
@@ -89,7 +89,7 @@ class QuizSeederD extends Seeder
             // Q6
             [
                 'question_text' => 'This sign indicates you should:',
-                'image_url' => '/test_images/c/q6.png',
+                'image_url' => '/test_images/d/q6.png',
                 'options' => [
                     "look out for cattle running loose.",
                     "look out for gravel trucks.",
@@ -112,7 +112,7 @@ class QuizSeederD extends Seeder
             // Q8
             [
                 'question_text' => 'Alcohol affects a driver by:',
-                'image_url' => '/test_images/c/q8.png',
+                'image_url' => '/test_images/d/q8.png',
                 'options' => [
                     "slowing down reaction and impairing perception.",
                     "interfering with concentration and loss of judgment.",
@@ -124,7 +124,7 @@ class QuizSeederD extends Seeder
             // Q9
             [
                 'question_text' => "A person's driver license will automatically be suspended if convicted of:",
-                'image_url' => '/test_images/c/q9.png', // <-- REUSED
+                'image_url' => '/test_images/d/q9.png', // <-- REUSED
                 'options' => [
                     "attempting to flee from a law enforcement officer.",
                     "possessing a fictitous or altered driver license.",
@@ -136,7 +136,7 @@ class QuizSeederD extends Seeder
             // Q10
             [
                 'question_text' => 'Vehicle skids are caused by:',
-                'image_url' => '/test_images/c/q10.png',
+                'image_url' => '/test_images/d/q10.png',
                 'options' => [
                     "tires losing their grip on the road surface.",
                     "too much ice or snow on the road.",
@@ -148,7 +148,7 @@ class QuizSeederD extends Seeder
             // Q11
             [
                 'question_text' => 'If you are involved in an injury crash in a city, you must immediately notify:',
-                'image_url' => '/test_images/c/q11.png',
+                'image_url' => '/test_images/d/q11.png',
                 'options' => [
                     "the county sheriff.",
                     "the highway patrol.",
@@ -160,7 +160,7 @@ class QuizSeederD extends Seeder
             // Q12
             [
                 'question_text' => 'When you are taking medicine prescribed for you by a doctor you should:',
-                'image_url' => '/test_images/c/q12.png',
+                'image_url' => '/test_images/d/q12.png',
                 'options' => [
                     "drive short distances only.",
                     "ask your doctor or pharmacist if it may affect your ability to drive.",
@@ -172,7 +172,7 @@ class QuizSeederD extends Seeder
             // Q13
             [
                 'question_text' => 'This sign indicates:',
-                'image_url' => '/test_images/c/q13.png', // <-- Add image
+                'image_url' => '/test_images/d/q13.png',
                 'options' => [
                     "turn left at any time.",
                     "oncoming traffic must stop for vehicles turning left at the intersection when the arrow is green.",
@@ -183,7 +183,7 @@ class QuizSeederD extends Seeder
             // Q14
             [
                 'question_text' => 'This sign indicates you should:',
-                'image_url' => '/test_images/c/q14.png', // <-- REUSED
+                'image_url' => '/test_images/d/q14.png', // <-- REUSED
                 'options' => [
                     "stop, then go ahead in the direction shown by the arrow.",
                     "proceed carefully in the direction of the arrow after yielding the right of way to other vehicles and pedestrians.",
@@ -195,7 +195,7 @@ class QuizSeederD extends Seeder
             // Q15
             [
                 'question_text' => 'This sign indicates you should:',
-                'image_url' => '/test_images/c/q15.png', // <-- Add image
+                'image_url' => '/test_images/d/q15.png', // <-- Add image
                 'options' => [
                     "slow down for a right curve and do not pass.",
                     "slow down for a right and left turn and do not pass.",
@@ -206,7 +206,7 @@ class QuizSeederD extends Seeder
             // Q16
             [
                 'question_text' => 'A solid yellow line on your side of the road marks a:',
-                'image_url' => '/test_images/c/q16.png',
+                'image_url' => '/test_images/d/q16.png',
                 'options' => [
                     "traffic signal ahead.",
                     "slow down zone.",
@@ -218,7 +218,7 @@ class QuizSeederD extends Seeder
             // Q17
             [
                 'question_text' => 'If you are driving at the speed limit and another driver sounds their horn and starts to pass, you should:',
-                'image_url' => '/test_images/c/q17.png',
+                'image_url' => '/test_images/d/q17.png',
                 'options' => [
                     "sound your horn and wave.",
                     "make it as safe and easy as you can for the other driver.",
@@ -230,7 +230,7 @@ class QuizSeederD extends Seeder
             // Q18
             [
                 'question_text' => 'When you approach a school bus which has stopped to pick up or discharge children, you must:',
-                'image_url' => '/test_images/c/q18.png', // <-- REUSED
+                'image_url' => '/test_images/d/q18.png', // <-- REUSED
                 'options' => [
                     "stop and wait until the bus has resumed motion or you are signaled by the driver to proceed.",
                     "sound your horn and carefully pass.",
@@ -242,7 +242,7 @@ class QuizSeederD extends Seeder
             // Q19
             [
                 'question_text' => 'As you near an intersection, you discover you are in the wrong lane for turning right as intended therefore, you should:',
-                'image_url' => '/test_images/c/q19.png',
+                'image_url' => '/test_images/d/q19.png',
                 'options' => [
                     "move quickly into the proper lane.",
                     "turn from the lane you are in if no cars are coming.",
@@ -254,7 +254,7 @@ class QuizSeederD extends Seeder
             // Q20
             [
                 'question_text' => 'The maximum daytime speed limit for passenger cars on most highways numbered by this state or United States is:',
-                'image_url' => '/test_images/c/q20.png',
+                'image_url' => '/test_images/d/q20.png',
                 'options' => [
                     "60 mph.",
                     "55 mph.",
@@ -266,7 +266,7 @@ class QuizSeederD extends Seeder
             // Q21
             [
                 'question_text' => 'The most a person (age 21 or older) can be fined for a first offense of driving while under the influence of intoxicating liquor with no death or crash resulting in injury is:',
-                'image_url' => '/test_images/c/q21.png',
+                'image_url' => '/test_images/d/q21.png',
                 'options' => [
                     "\$3,000.",
                     "\$2,000.",
@@ -278,7 +278,7 @@ class QuizSeederD extends Seeder
             // Q22
             [
                 'question_text' => 'This sign indicates you should:',
-                'image_url' => '/test_images/c/q22.png', // <-- Add image
+                'image_url' => '/test_images/d/q22.png', // <-- Add image
                 'options' => [
                     "slow down and watch for people crossing the street on foot.",
                     "watch for an intersection.",
@@ -289,7 +289,7 @@ class QuizSeederD extends Seeder
             // Q23
             [
                 'question_text' => 'If a child ran into the road 60 to 65 feet ahead of your vehicle, what is the highest speed from which you could stop with good brakes before hitting the child?',
-                'image_url' => '/test_images/c/q23.png',
+                'image_url' => '/test_images/d/q23.png',
                 'options' => [
                     "40 mph.",
                     "50 mph.",
@@ -301,7 +301,7 @@ class QuizSeederD extends Seeder
             // Q24
             [
                 'question_text' => 'This sign indicates you should:',
-                'image_url' => '/test_images/c/q24.png', // <-- REUSED
+                'image_url' => '/test_images/d/q24.png',
                 'options' => [
                     "stop only when other traffic is close.",
                     "slow down very slowly.",
@@ -312,7 +312,7 @@ class QuizSeederD extends Seeder
             // Q25
             [
                 'question_text' => 'This sign indicates you should:',
-                'image_url' => '/test_images/c/q25.png', // <-- REUSED
+                'image_url' => '/test_images/d/q25.png', // <-- REUSED
                 'options' => [
                     "watch for children.",
                     "drive around this area.",
@@ -323,7 +323,7 @@ class QuizSeederD extends Seeder
             // Q26
             [
                 'question_text' => 'This sign indicates you should:',
-                'image_url' => '/test_images/c/q26.png', // <-- Add image
+                'image_url' => '/test_images/d/q26.png', // <-- Add image
                 'options' => [
                     "slow down for a left turn.",
                     "look for a detour to the left.",
@@ -334,7 +334,7 @@ class QuizSeederD extends Seeder
             // Q27
             [
                 'question_text' => 'This sign indicates you should:',
-                'image_url' => '/test_images/c/q27.png', // <-- Add image
+                'image_url' => '/test_images/d/q27.png', // <-- Add image
                 'options' => [
                     "look carefully in all directions for traffic.",
                     "watch mostly to the right for other traffic.",
@@ -345,7 +345,7 @@ class QuizSeederD extends Seeder
             // Q28
             [
                 'question_text' => 'This sign indicates you should:',
-                'image_url' => '/test_images/c/q28.png', // <-- Add image
+                'image_url' => '/test_images/d/q28.png', // <-- Add image
                 'options' => [
                     "slow down for a reverse turn ahead.",
                     "get ready to cross or enter a one-way street to the right.",
@@ -356,7 +356,7 @@ class QuizSeederD extends Seeder
             // Q29
             [
                 'question_text' => 'The shape of this sign indicates you should:',
-                'image_url' => '/test_images/c/q29.png', // <-- REUSED
+                'image_url' => '/test_images/d/q29.png', // <-- REUSED
                 'options' => [
                     "look out for a train.",
                     "always stop, look and listen.",
@@ -367,7 +367,7 @@ class QuizSeederD extends Seeder
             // Q30
             [
                 'question_text' => 'This sign indicates you should:',
-                'image_url' => '/test_images/c/q30.png', // <-- REUSED
+                'image_url' => '/test_images/d/q30.png', // <-- REUSED
                 'options' => [
                     "speed up to beat other cars across.",
                     "slow down and use caution because the bridge ahead is not as wide as the road.",

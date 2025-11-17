@@ -286,7 +286,7 @@ class QuizSeederF extends Seeder
             // Q23
             [
                 'question_text' => 'If you are stopped by law enforcement in an unsafe area, you may:',
-                'image_url' => '/test_images/f/q23.png',
+                'image_url' => null,
                 'options' => [
                     "Turn on your hazard lights",
                     "Drive to a nearby, well-lit, populated area",
@@ -310,7 +310,7 @@ class QuizSeederF extends Seeder
             // Q25
             [
                 'question_text' => 'If you have a blow-out while driving, you should:',
-                'image_url' => null,
+                'image_url' => '/test_images/f/q23.png',
                 'options' => [
                     "push in the clutch and coast to a stop.",
                     "step on the gas.",
@@ -345,7 +345,7 @@ class QuizSeederF extends Seeder
             // Q28
             [
                 'question_text' => 'This sign indicates you should:',
-                'image_url' => '/test_images/sign_narrow_bridge.png', // <-- Add image here
+                'image_url' => '/test_images/f/q28.png', // <-- Add image here
                 'options' => [
                     "slow down and use caution because the bridge ahead is not as wide as the road.",
                     "speed up to beat other cars across.",
