@@ -76,7 +76,7 @@ export default function Show({ quiz }) {
                     {/* Quiz Details */}
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6">
-                            <h3 className="text-lg font-semibold text-gray-900 mb-2">Quiz Details</h3>
+                            <h3 className="text-lg font-semibold text-gray-900 mb-2">Exam Details</h3>
                             <p className="text-gray-600">{quiz.description}</p>
                             <p className="text-sm text-gray-500 mt-2">
                                 {quiz.questions.length} questions

@@ -19,6 +19,13 @@ class Quiz extends Model
     ];
 
     /**
+     * The attributes that should be cast.
+     */
+    protected $casts = [
+        'questions_count' => 'integer',
+    ];
+
+    /**
      * Get the instructor (user) who owns this quiz.
      */
     public function instructor(): BelongsTo
