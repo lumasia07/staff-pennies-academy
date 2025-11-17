@@ -41,9 +41,6 @@ jobs:
       - name: Create .env file
         run: echo "${{ secrets.PROD_ENV }}" > .env
 
-      - name: Run database migrations and seed
-        run: php artisan migrate:fresh --seed --force
-
       # --- 4. Deploy to cPanel via FTP ---
       - name: Deploy files via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
