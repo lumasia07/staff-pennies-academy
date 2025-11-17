@@ -52,7 +52,7 @@ class StudentTestController extends Controller
         $quiz = Quiz::findOrFail($validatedData['quiz_id']);
         $instructor = Auth::user();
         $expiresIn = $validatedData['expires_in'] ?? 1;
-        $expiresAt = Carbon::now()->addHours((float) $expiresIn);
+        $expiresAt = Carbon::now()->addHours((float) $expiresIn)->utc();
 
         $assigned = [];
         // Mass assignment if emails provided
