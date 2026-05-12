@@ -253,7 +253,7 @@
         </div>
 
         <!-- This starts the second page of the PDF -->
-        {{-- <div class="answers-section">
+        <div class="answers-section">
             <h2 class="answers-header">Test Review</h2>
             @foreach($test->answers as $index => $answer)
                 <div class="question-block">
@@ -267,7 +267,7 @@
                     @endif
                 </div>
             @endforeach
-        </div> --}}
+        </div>
 
     </div>
 </body>

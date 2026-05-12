@@ -146,7 +146,7 @@
 <body>
     <div class="email-wrapper">
         <div class="header">
-            <img src="https://i.postimg.cc/rdkyv7dV/dtn-logo.png" alt="Drivers Test Now" class="logo">
+            <h1 style="color: #ffffff; margin: 0; font-size: 28px;">Drivers Test Now</h1>
         </div>
         
         <div class="content">
