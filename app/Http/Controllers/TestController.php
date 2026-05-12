@@ -108,9 +108,12 @@ class TestController extends Controller
             ]);
         }
 
-        // Update test with score
+        // Calculate percentage score
+        $percentageScore = $totalQuestions > 0 ? round(($score / $totalQuestions) * 100) : 0;
+
+        // Update test with percentage score
         $studentTest->update([
-            'score' => $score,
+            'score' => $percentageScore,
             'completed_at' => now(),
         ]);
 

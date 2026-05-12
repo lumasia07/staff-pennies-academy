@@ -196,8 +196,11 @@
                 </p>
             @endif
             
+            
             <div class="button-container">
-                <a href="{{ $pdfUrl }}" class="button">📄 Download Detailed Report (PDF)</a>
+                <p style="background: #e8f4fd; border-left: 4px solid #0169fe; padding: 15px; border-radius: 4px; color: #2c3e50; text-align: left; font-size: 14px;">
+                    <strong>📄 Detailed Report:</strong> For security purposes, the detailed PDF score report with answer breakdowns is available exclusively through your instructor. Please contact them directly to request a copy.
+                </p>
             </div>
         </div>
         

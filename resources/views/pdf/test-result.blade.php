@@ -234,14 +234,14 @@
                 <tr>
                     <td style="padding: 10px; font-weight: bold; background: #f1f1f1;">Result</td>
                     <td style="padding: 10px; text-align: center; font-weight: bold; 
-                            color: {{ $test->score >= 70 ? '#28a745' : '#dc3545' }};">
-                        {{ $test->score >= 70 ? 'PASSED' : 'FAILED' }}
+                            color: {{ $test->score >= 80 ? '#28a745' : '#dc3545' }};">
+                        {{ $test->score >= 80 ? 'PASSED' : 'FAILED' }}
                     </td>
                 </tr>
             </table>
 
             <p class="summary-text" style="margin-top: 15px;">
-                @if($test->score >= 70)
+                @if($test->score >= 80)
                     This performance meets the passing standard of 80% and demonstrates satisfactory mastery of the assessed material.
                 @else
                     This performance does not meet the passing standard of 80%.

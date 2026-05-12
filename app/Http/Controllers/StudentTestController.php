@@ -154,20 +154,12 @@ class StudentTestController extends Controller
             // 3. Load necessary data
             $studentTest->load('student', 'quiz', 'answers.question');
 
-            // 4. Count correct/incorrect
+            // 4. Count correct/incorrect and calculate percentage
             $correct = $studentTest->answers->where('is_correct', true)->count();
             $total = $studentTest->quiz->questions->count();
-            $incorrect = $total - $correct;
+            $percentageScore = $total > 0 ? round(($correct / $total) * 100) : 0;
 
-            // 5. Generate the PDF
-            $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('pdf.test-result', [
-                'test' => $studentTest,
-                'correct' => $correct,
-                'incorrect' => $incorrect,
-                'total' => $total,
-            ]);
-
-            // 6. Send the result email with PDF as attachment
+            // 5. Send the result email (no PDF attachment — PDF is instructor-only on dashboard)
             \Log::info('Attempting to send result email', [
                 'student_email' => $studentTest->student->email,
                 'student_name' => $studentTest->student->first_name,
@@ -177,11 +169,10 @@ class StudentTestController extends Controller
             Mail::to($studentTest->student->email)->send(new StudentResultMail(
                 $studentTest->student->first_name,
                 $studentTest->quiz->title,
-                $studentTest->score,
+                $percentageScore,
                 $correct,
                 $total,
-                $studentTest->completed_at,
-                route('results.pdf', $studentTest) // Link to download PDF
+                $studentTest->completed_at
             ));
             
             \Log::info('Result email sent successfully to: ' . $studentTest->student->email);

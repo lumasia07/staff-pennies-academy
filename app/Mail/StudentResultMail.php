@@ -6,7 +6,6 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
-use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Queue\SerializesModels;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
@@ -21,12 +20,11 @@ class StudentResultMail extends Mailable
     public int $correct;
     public int $total;
     public Carbon $completedAt;
-    public string $pdfUrl;
 
     /**
      * Create a new message instance.
      */
-    public function __construct(string $studentName, string $quizTitle, int $score, int $correct, int $total, Carbon $completedAt, string $pdfUrl)
+    public function __construct(string $studentName, string $quizTitle, int $score, int $correct, int $total, Carbon $completedAt)
     {
         $this->studentName = $studentName;
         $this->quizTitle = $quizTitle;
@@ -34,7 +32,6 @@ class StudentResultMail extends Mailable
         $this->correct = $correct;
         $this->total = $total;
         $this->completedAt = $completedAt;
-        $this->pdfUrl = $pdfUrl;
         Log::debug('StudentResultMail constructed', [
             'studentName' => $studentName,
             'quizTitle' => $quizTitle,
@@ -42,7 +39,6 @@ class StudentResultMail extends Mailable
             'correct' => $correct,
             'total' => $total,
             'completedAt' => $completedAt,
-            'pdfUrl' => $pdfUrl,
         ]);
     }
 
