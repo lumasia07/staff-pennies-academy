@@ -51,18 +51,23 @@ export default function Login({ status, canResetPassword }) {
             <form onSubmit={submit}>
                 {/* Location Input */}
                 <div>
-                    <TextInput
+                    <select
                         id="location"
-                        type="text"
                         name="location"
                         value={data.location}
-                        placeholder="Location (e.g. Frisco)"
-                        className="mt-1 block w-full"
-                        autoComplete="off"
-                        isFocused={true}
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-pennies-purple focus:ring-pennies-purple"
                         onChange={(e) => setData('location', e.target.value)}
-                        focusClasses="focus:ring-pennies-purple"
-                    />
+                        required
+                    >
+                        <option value="" disabled>Select Location</option>
+                        <option value="Frisco">Frisco</option>
+                        <option value="Denton">Denton</option>
+                        <option value="Grapevine">Grapevine</option>
+                        <option value="Rockwall">Rockwall</option>
+                        <option value="McKinney">McKinney</option>
+                        <option value="Prosper">Prosper</option>
+                        <option value="Princeton">Princeton</option>
+                    </select>
                 </div>
 
                 {/* Password Input - Eye/EyeOff Added */}
