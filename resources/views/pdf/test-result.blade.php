@@ -260,10 +260,10 @@
                     <p class="question-text"><strong>Q{{ $index + 1 }}:</strong> {{ $answer->question->question_text }}</p>
                     
                     @if($answer->is_correct)
-                        <p class="answer answer-correct">Your Answer: {{ $answer->question->options[$answer->submitted_option_index] }} (Correct)</p>
+                        <p class="answer answer-correct">Your Answer: {{ $answer->submitted_option_index !== null && $answer->submitted_option_index !== '' ? ($answer->question->options[$answer->submitted_option_index] ?? 'Unknown') : 'No Answer' }} (Correct)</p>
                     @else
-                        <p class="answer answer-incorrect">Your Answer: {{ $answer->question->options[$answer->submitted_option_index] }} (Wrong)</p>
-                        <p class="answer answer-key"><strong>Correct Answer:</strong> {{ $answer->question->options[$answer->question->correct_option_index] }}</p>
+                        <p class="answer answer-incorrect">Your Answer: {{ $answer->submitted_option_index !== null && $answer->submitted_option_index !== '' ? ($answer->question->options[$answer->submitted_option_index] ?? 'Unknown') : 'No Answer' }} (Wrong)</p>
+                        <p class="answer answer-key"><strong>Correct Answer:</strong> {{ $answer->question->correct_option_index !== null && $answer->question->correct_option_index !== '' ? ($answer->question->options[$answer->question->correct_option_index] ?? 'Unknown') : 'Unknown' }}</p>
                     @endif
                 </div>
             @endforeach
