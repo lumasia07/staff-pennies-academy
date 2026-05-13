@@ -105,7 +105,7 @@
             
             <div class="divider"></div>
             
-            <p>⏰ <strong>Important:</strong> This test link expires on <span class="expiry">{{ $expiresAt->format('F j, Y \a\t g:i A') }}</span></p>
+            <p>⏰ <strong>Important:</strong> This test link expires in <span class="expiry">1 hour</span></p>
             
             <p>Click the button below to start your test. Make sure you have a stable internet connection and enough time to complete the assessment.</p>
             
