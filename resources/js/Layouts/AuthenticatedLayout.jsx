@@ -114,6 +114,32 @@ export default function AuthenticatedLayout({ header, children }) {
                                         >
                                             Profile
                                         </Dropdown.Link>
+                                        <div className="border-t border-gray-100"></div>
+                                        <div className="block px-4 py-2 text-xs text-gray-400">
+                                            Switch Location
+                                        </div>
+                                        <Dropdown.Link href="#">
+                                            Frisco Profile
+                                        </Dropdown.Link>
+                                        <Dropdown.Link href="#">
+                                            Denton Profile
+                                        </Dropdown.Link>
+                                        <Dropdown.Link href="#">
+                                            Grapevine Profile
+                                        </Dropdown.Link>
+                                        <Dropdown.Link href="#">
+                                            Rockwall Profile
+                                        </Dropdown.Link>
+                                        <Dropdown.Link href="#">
+                                            McKinney Profile
+                                        </Dropdown.Link>
+                                        <Dropdown.Link href="#">
+                                            Prosper Profile
+                                        </Dropdown.Link>
+                                        <Dropdown.Link href="#">
+                                            Princeton Profile
+                                        </Dropdown.Link>
+                                        <div className="border-t border-gray-100"></div>
                                         <Dropdown.Link
                                             href={route('logout')}
                                             method="post"
@@ -221,6 +247,33 @@ export default function AuthenticatedLayout({ header, children }) {
                             <ResponsiveNavLink href={route('profile.edit')}>
                                 Profile
                             </ResponsiveNavLink>
+                            <div className="border-t border-gray-200 pb-1 pt-1">
+                                <div className="px-4 py-2 text-xs text-gray-500 font-medium uppercase tracking-wider">
+                                    Switch Location
+                                </div>
+                                <ResponsiveNavLink href="#">
+                                    Frisco Profile
+                                </ResponsiveNavLink>
+                                <ResponsiveNavLink href="#">
+                                    Denton Profile
+                                </ResponsiveNavLink>
+                                <ResponsiveNavLink href="#">
+                                    Grapevine Profile
+                                </ResponsiveNavLink>
+                                <ResponsiveNavLink href="#">
+                                    Rockwall Profile
+                                </ResponsiveNavLink>
+                                <ResponsiveNavLink href="#">
+                                    McKinney Profile
+                                </ResponsiveNavLink>
+                                <ResponsiveNavLink href="#">
+                                    Prosper Profile
+                                </ResponsiveNavLink>
+                                <ResponsiveNavLink href="#">
+                                    Princeton Profile
+                                </ResponsiveNavLink>
+                            </div>
+                            <div className="border-t border-gray-200"></div>
                             <ResponsiveNavLink
                                 method="post"
                                 href={route('logout')}

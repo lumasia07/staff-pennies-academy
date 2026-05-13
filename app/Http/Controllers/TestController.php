@@ -62,6 +62,10 @@ class TestController extends Controller
     {
         $studentTest = StudentTest::where('unique_link_token', $token)->firstOrFail();
 
+        if ($studentTest->expires_at->isPast()) {
+            return redirect()->route('student.test.show', $token);
+        }
+
         if ($studentTest->started_at || $studentTest->completed_at) {
             return redirect()->route('student.test.show', $token);
         }
@@ -82,6 +86,10 @@ class TestController extends Controller
         $studentTest = StudentTest::where('unique_link_token', $token)
             ->with(['quiz.questions'])
             ->firstOrFail();
+
+        if ($studentTest->expires_at->isPast()) {
+            return redirect()->route('student.test.show', $token);
+        }
 
         if ($studentTest->completed_at) {
             return redirect()->route('student.test.show', $token);
