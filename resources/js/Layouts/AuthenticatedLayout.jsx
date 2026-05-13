@@ -118,25 +118,25 @@ export default function AuthenticatedLayout({ header, children }) {
                                         <div className="block px-4 py-2 text-xs text-gray-400">
                                             Switch Location
                                         </div>
-                                        <Dropdown.Link href="#">
+                                        <Dropdown.Link href={route('location.switch', 'Frisco')}>
                                             Frisco Profile
                                         </Dropdown.Link>
-                                        <Dropdown.Link href="#">
+                                        <Dropdown.Link href={route('location.switch', 'Denton')}>
                                             Denton Profile
                                         </Dropdown.Link>
-                                        <Dropdown.Link href="#">
+                                        <Dropdown.Link href={route('location.switch', 'Grapevine')}>
                                             Grapevine Profile
                                         </Dropdown.Link>
-                                        <Dropdown.Link href="#">
+                                        <Dropdown.Link href={route('location.switch', 'Rockwall')}>
                                             Rockwall Profile
                                         </Dropdown.Link>
-                                        <Dropdown.Link href="#">
+                                        <Dropdown.Link href={route('location.switch', 'McKinney')}>
                                             McKinney Profile
                                         </Dropdown.Link>
-                                        <Dropdown.Link href="#">
+                                        <Dropdown.Link href={route('location.switch', 'Prosper')}>
                                             Prosper Profile
                                         </Dropdown.Link>
-                                        <Dropdown.Link href="#">
+                                        <Dropdown.Link href={route('location.switch', 'Princeton')}>
                                             Princeton Profile
                                         </Dropdown.Link>
                                         <div className="border-t border-gray-100"></div>
@@ -251,25 +251,25 @@ export default function AuthenticatedLayout({ header, children }) {
                                 <div className="px-4 py-2 text-xs text-gray-500 font-medium uppercase tracking-wider">
                                     Switch Location
                                 </div>
-                                <ResponsiveNavLink href="#">
+                                <ResponsiveNavLink href={route('location.switch', 'Frisco')}>
                                     Frisco Profile
                                 </ResponsiveNavLink>
-                                <ResponsiveNavLink href="#">
+                                <ResponsiveNavLink href={route('location.switch', 'Denton')}>
                                     Denton Profile
                                 </ResponsiveNavLink>
-                                <ResponsiveNavLink href="#">
+                                <ResponsiveNavLink href={route('location.switch', 'Grapevine')}>
                                     Grapevine Profile
                                 </ResponsiveNavLink>
-                                <ResponsiveNavLink href="#">
+                                <ResponsiveNavLink href={route('location.switch', 'Rockwall')}>
                                     Rockwall Profile
                                 </ResponsiveNavLink>
-                                <ResponsiveNavLink href="#">
+                                <ResponsiveNavLink href={route('location.switch', 'McKinney')}>
                                     McKinney Profile
                                 </ResponsiveNavLink>
-                                <ResponsiveNavLink href="#">
+                                <ResponsiveNavLink href={route('location.switch', 'Prosper')}>
                                     Prosper Profile
                                 </ResponsiveNavLink>
-                                <ResponsiveNavLink href="#">
+                                <ResponsiveNavLink href={route('location.switch', 'Princeton')}>
                                     Princeton Profile
                                 </ResponsiveNavLink>
                             </div>
