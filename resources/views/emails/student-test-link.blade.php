@@ -12,7 +12,7 @@
             padding: 0;
             background-color: #f4f4f4;
         }
-        .email-wrapper {
+        .email-wrapper { 
             max-width: 600px;
             margin: 30px auto;
             background-color: #ffffff;

@@ -109,12 +109,7 @@ export default function AuthenticatedLayout({ header, children }) {
                                                 </div>
                                             </div>
                                         </div>
-                                        <Dropdown.Link
-                                            href={route('profile.edit')}
-                                        >
-                                            Profile
-                                        </Dropdown.Link>
-                                        <div className="border-t border-gray-100"></div>
+
                                         <div className="block px-4 py-2 text-xs text-gray-400">
                                             Switch Location
                                         </div>
@@ -244,9 +239,6 @@ export default function AuthenticatedLayout({ header, children }) {
                         </div>
 
                         <div className="mt-3 space-y-1 px-2">
-                            <ResponsiveNavLink href={route('profile.edit')}>
-                                Profile
-                            </ResponsiveNavLink>
                             <div className="border-t border-gray-200 pb-1 pt-1">
                                 <div className="px-4 py-2 text-xs text-gray-500 font-medium uppercase tracking-wider">
                                     Switch Location
