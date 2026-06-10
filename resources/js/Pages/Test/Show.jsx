@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Head, useForm } from '@inertiajs/react';
+import { Head, router } from '@inertiajs/react';
 import PrimaryButton from '@/Components/PrimaryButton';
 
 export default function Show({ studentTest, quiz, questions }) {
@@ -7,9 +7,8 @@ export default function Show({ studentTest, quiz, questions }) {
     const [answers, setAnswers] = useState({});
     const [timeLeft, setTimeLeft] = useState(null);
     const [isAutoSubmit, setIsAutoSubmit] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const hasSubmitted = useRef(false);
-
-    const { post, processing } = useForm();
 
     const currentQuestion = questions[currentQuestionIndex];
     const STORAGE_KEY = `quiz_${studentTest.unique_link_token}`;
@@ -142,12 +141,12 @@ export default function Show({ studentTest, quiz, questions }) {
         if (hasSubmitted.current && !isAuto) return;
         
         hasSubmitted.current = true;
+        setIsSubmitting(true);
         
-        post(route('student.test.submit', studentTest.unique_link_token), {
-            data: { 
-                answers,
-                auto_submitted: isAuto 
-            },
+        router.post(route('student.test.submit', studentTest.unique_link_token), {
+            answers,
+            auto_submitted: isAuto
+        }, {
             onSuccess: () => {
                 // Clear localStorage on successful submission
                 localStorage.removeItem(STORAGE_KEY);
@@ -157,6 +156,9 @@ export default function Show({ studentTest, quiz, questions }) {
                 if (!isAuto) {
                     hasSubmitted.current = false;
                 }
+            },
+            onFinish: () => {
+                setIsSubmitting(false);
             }
         });
     };
@@ -409,14 +411,14 @@ export default function Show({ studentTest, quiz, questions }) {
                                 <div className="bg-white shadow-lg rounded-xl p-3 border border-gray-200">
                                     <button
                                         onClick={() => submitTest(false)}
-                                        disabled={processing || !allQuestionsAnswered}
+                                        disabled={isSubmitting || !allQuestionsAnswered}
                                         className={`w-full py-2.5 px-4 rounded-lg font-bold text-sm transition-all duration-200 ${
-                                            !allQuestionsAnswered || processing
+                                            !allQuestionsAnswered || isSubmitting
                                                 ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
                                                 : 'bg-gradient-to-r from-red-600 to-rose-600 text-white hover:from-red-700 hover:to-rose-700 shadow-md hover:shadow-lg'
                                         }`}
                                     >
-                                        {processing ? (
+                                        {isSubmitting ? (
                                             <span className="flex items-center justify-center">
                                                 <svg className="animate-spin h-5 w-5 mr-2" viewBox="0 0 24 24">
                                                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"/>

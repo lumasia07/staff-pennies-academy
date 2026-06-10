@@ -102,7 +102,7 @@ class TestController extends Controller
 
         foreach ($studentTest->quiz->questions as $question) {
             $studentAnswer = $answers[$question->id] ?? null;
-            $isCorrect = $studentAnswer == $question->correct_option_index;
+            $isCorrect = $studentAnswer !== null && (int)$studentAnswer === (int)$question->correct_option_index;
 
             if ($isCorrect) {
                 $score++;
